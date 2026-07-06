@@ -1,0 +1,78 @@
+{
+  "id": "330360e8-5d10-4469-af69-caf2cfa53ffe",
+  "name": "Bluace Test Extension",
+  "publisher": "Bluace BV",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "http://www.bluace.nl",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "5d86850b-0d76-4eca-bd7b-951ad998e997",
+      "name": "Tests-TestLibraries",
+      "publisher": "Microsoft",
+      "version": "21.0.0.0"
+    },
+    {
+      "id": "23de40a6-dfe8-4f80-80db-d70f83ce8caf",
+      "name": "Test Runner",
+      "publisher": "Microsoft",
+      "version": "21.0.0.0"
+    },
+    {
+      "id": "5095f467-0a01-4b99-99d1-9ff1237d286f",
+      "publisher": "Microsoft",
+      "name": "Library Variable Storage",
+      "version": "21.1.0.0"
+    },
+    {
+      "id": "1bf2cd3e-b474-420e-a868-6f39f18c96e3",
+      "name": "Bluace Library",
+      "publisher": "Bluace BV",
+      "version": "1.0.0.0"
+    },
+    {
+      "id": "a1283dcf-2151-4bb9-b67c-9c0d0034820e",
+      "name": "Base Functionality",
+      "publisher": "Bluace BV",
+      "version": "1.0.0.0"
+    },
+    {
+      "id": "12ef662b-30d6-496c-90c8-6a1c7eec25b4",
+      "name": "Technical Management",
+      "publisher": "Bluace BV",
+      "version": "1.0.0.0"
+    }
+  ],
+  "propagateDependencies": true,
+  "screenshots": [],
+  "platform": "28.0.0.0",
+  "application": "28.0.0.0",
+  "idRanges": [
+    {
+      "from": 83850,
+      "to": 83999
+    }
+  ],
+  "internalsVisibleTo": [
+    {
+      "id": "1901b51d-e52a-4f1b-a0e6-eee2a368d532",
+      "publisher": "Bluace",
+      "name": "Technical Management Test"
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "17.0",
+  "features": [
+    "TranslationFile"
+  ],
+  "resourceFolders": [ "resources" ]
+}

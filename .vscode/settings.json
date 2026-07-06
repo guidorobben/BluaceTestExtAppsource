@@ -1,0 +1,28 @@
+{
+    "grammarly.selectors": [
+        {
+            "language": "al",
+            "scheme": "file"
+        }
+    ],
+
+    "al.enableCodeAnalysis": true,
+    "al.ruleSetPath": "rulesets/ruleset.json",
+    "al.codeAnalyzers": [
+        "${CodeCop}",
+        "${PerTenantExtensionCop}",
+        "${analyzerFolder}ALCops.ApplicationCop.dll",
+        "${analyzerFolder}ALCops.DocumentationCop.dll",
+        "${analyzerFolder}ALCops.FormattingCop.dll",
+        "${analyzerFolder}ALCops.LinterCop.dll",
+        "${analyzerFolder}ALCops.PlatformCop.dll",
+        "${analyzerFolder}ALCops.Common.dll"
+    ],
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.ObjectNameSuffix": "TPTE",
+    "CRS.RemoveSuffixFromFilename": true,
+    "CRS.AlSubFolderName": "src",
+    "xliffSync.baseFile": "Bluace Test Extension.g.xlf"
+}
