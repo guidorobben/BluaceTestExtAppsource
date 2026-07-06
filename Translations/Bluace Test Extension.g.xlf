@@ -1778,6 +1778,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Field Mismatch TPTE - Control TableNameTo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 408543773 - Action 3750901576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mismatch Templates</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Field Mismatch TPTE - Action ShowMismatchTemplates - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 408543773 - Action 2162517528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Build List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1992,6 +1997,11 @@
           <source>Mismatch Templates</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Mismatch Templates TPTE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2016309358 - Action 3635001401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Templates</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Mismatch Templates TPTE - Action CreateTemplates - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 239907349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Next Major Build Resp. Su</source>

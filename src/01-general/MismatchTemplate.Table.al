@@ -4,6 +4,9 @@ table 83857 "Mismatch Template TPTE"
     DataClassification = CustomerContent;
     DrillDownPageId = "Mismatch Templates TPTE";
     LookupPageId = "Mismatch Templates TPTE";
+    Permissions =
+        tabledata AllObjWithCaption = r,
+        tabledata "Mismatch Template TPTE" = ri;
 
     fields
     {
@@ -69,4 +72,22 @@ table 83857 "Mismatch Template TPTE"
         end;
     end;
 
+    procedure CreateTemplates()
+    begin
+        CreateTemplateFromTable(1382, 27);
+        CreateTemplateFromTable(17, 11307);
+    end;
+
+    local procedure CreateTemplateFromTable(TableIDFrom: Integer; TableIDTo: Integer)
+    var
+        MismatchTemplate: Record "Mismatch Template TPTE";
+    begin
+        if MismatchTemplate.Get(TableIDFrom, TableIDTo) then
+            exit;
+
+        MismatchTemplate.Init();
+        MismatchTemplate."Table ID From" := TableIDFrom;
+        MismatchTemplate."Table ID To" := TableIDTo;
+        MismatchTemplate.Insert(true);
+    end;
 }

@@ -19,4 +19,21 @@ page 83871 "Mismatch Templates TPTE"
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(CreateTemplates)
+            {
+                Caption = 'Create Templates';
+                Image = AddAction;
+
+                trigger OnAction()
+                begin
+                    Rec.CreateTemplates();
+                end;
+            }
+        }
+    }
 }

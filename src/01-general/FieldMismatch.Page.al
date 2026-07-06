@@ -149,10 +149,25 @@ page 83872 "Field Mismatch TPTE"
                 end;
             }
         }
+        area(Navigation)
+        {
+            action(ShowMismatchTemplates)
+            {
+                Caption = 'Mismatch Templates';
+                Image = "1099Form";
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::"Mismatch Templates TPTE");
+                end;
+            }
+        }
+
         area(Promoted)
         {
             actionref(BuildList_Promoted; BuildList) { }
             actionref(ToggleMismatch_Promoted; ToggleMismatch) { }
+            actionref(ShowMismatchTemplates_Promoted; ShowMismatchTemplates) { }
         }
     }
 

@@ -15,18 +15,21 @@ codeunit 83883 "Field Mismatch Hlp. TPTE"
         FindMismatch(FieldMismatch);
 
         FieldMismatch.Reset();
-        if FieldMismatch.FindFirst() then;
+        if FieldMismatch.FindFirst() then; // Pointer
     end;
 
     local procedure BuildFromFieldList(var FieldMismatch: Record "Field Mismatch TPTE"; TableID: Integer)
     var
         Fields: Record Field;
+        TableRecordRef: RecordRef;
         EntryNo: Integer;
     begin
         EntryNo := 0;
+        TableRecordRef.Open(TableID);
 
         Fields.Reset();
         Fields.SetRange(TableNo, TableID);
+        Fields.SetLoadFields("App Package ID", Enabled, FieldName, "No.", ObsoleteState, Type, "Type Name");
         if Fields.FindSet() then
             repeat
                 EntryNo := EntryNo + 100;
@@ -37,6 +40,10 @@ codeunit 83883 "Field Mismatch Hlp. TPTE"
                 FieldMismatch."Field Name From" := Fields.FieldName;
                 FieldMismatch."Field Type From" := Fields.Type;
                 FieldMismatch."Field Type Name From" := Fields."Type Name";
+                if Fields.Type = Fields.Type::Option then
+                    if TableRecordRef.Field(Fields."No.").IsEnum() then
+                        FieldMismatch."Field Type Name From" := 'Enum';
+                //TODO option value fields
                 FieldMismatch."Enabled From" := Fields.Enabled;
                 FieldMismatch."ObsoleteState From" := Fields.ObsoleteState;
                 FieldMismatch."App Package ID From" := Fields."App Package ID";
@@ -60,10 +67,14 @@ codeunit 83883 "Field Mismatch Hlp. TPTE"
     local procedure BuildToFieldList(var FieldMismatch: Record "Field Mismatch TPTE"; TableID: Integer)
     var
         Fields: Record Field;
+        TableRecordRef: RecordRef;
     begin
+        TableRecordRef.Open(TableID);
+
         Fields.Reset();
         Fields.SetRange(TableNo, TableID);
         Fields.SetLoadFields();
+        Fields.SetLoadFields("App Package ID", Enabled, FieldName, "No.", ObsoleteState, Type, "Type Name");
         if Fields.FindSet() then
             repeat
                 FieldMismatch.Reset();
@@ -73,6 +84,9 @@ codeunit 83883 "Field Mismatch Hlp. TPTE"
                     FieldMismatch."Field Name To" := Fields.FieldName;
                     FieldMismatch."Field Type To" := Fields.Type;
                     FieldMismatch."Field Type Name To" := Fields."Type Name";
+                    if Fields.Type = Fields.Type::Option then
+                        if TableRecordRef.Field(Fields."No.").IsEnum() then
+                            FieldMismatch."Field Type Name To" := 'Enum';
                     FieldMismatch."Enabled To" := Fields.Enabled;
                     FieldMismatch."ObsoleteState To" := Fields.ObsoleteState;
                     FieldMismatch."App Package ID To" := Fields."App Package ID";
