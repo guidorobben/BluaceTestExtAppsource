@@ -413,6 +413,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Mismatch Template TPTE - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 821036371 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Mismatch Template TPTE - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 821036371 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Mismatch Template TPTE - Field Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 821036371 - Field 3709227119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table ID From</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1777,6 +1787,21 @@
           <source>Table Name To</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Field Mismatch TPTE - Control TableNameTo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 408543773 - Control 3379441404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Field Mismatch TPTE - Control Template - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 408543773 - Control 3365765267 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Mismatch Template Code field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Field Mismatch TPTE - Control MismatchTemplateCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 408543773 - Control 3365765267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mismatch Template Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Field Mismatch TPTE - Control MismatchTemplateCode - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 408543773 - Action 3750901576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Mismatch Templates</source>

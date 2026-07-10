@@ -37,6 +37,10 @@ codeunit 83919 "Test Code TPTE"
         T: Text;
         TokenValidText: Text;
     begin
+        BuildDescription(TokenValidText, Today());
+        Message(TokenValidText);
+
+        exit;
         T := TypeHelper.GetCurrUTCDateTimeISO8601();
         Message('%1', T);
 
@@ -69,6 +73,16 @@ codeunit 83919 "Test Code TPTE"
         // FeatureManagement.EnableFeature('SalesPrices');
         // FeatureManagement.EnableFeature('FullTextSearch');
 
+    end;
+
+    local procedure BuildDescription(var Description: Text[100]; D: Date)
+    var
+        TranslationHelper: Codeunit "Translation Helper";
+        DescriptionLbl: Label '%1 %2 %3', Comment = '%1=Description, %2=Month, %3=Year', Locked = true;
+    begin
+        TranslationHelper.SetGlobalLanguageById(1033);
+        Description := StrSubstNo(DescriptionLbl, Description, Format(D, 0, '<Month Text>'), D.Year());
+        TranslationHelper.RestoreGlobalLanguage();
     end;
 
     procedure Test2()

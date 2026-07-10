@@ -10,7 +10,12 @@ table 83857 "Mismatch Template TPTE"
 
     fields
     {
-        field(1; "Table ID From"; Integer)
+        field(1; Code; Code[20])
+        {
+            Caption = 'Code';
+            NotBlank = true;
+        }
+        field(10; "Table ID From"; Integer)
         {
             Caption = 'Table ID From';
             NotBlank = true;
@@ -30,21 +35,25 @@ table 83857 "Mismatch Template TPTE"
                 OnLookupObjectTo();
             end;
         }
-        field(10; "Table Name From"; Text[250])
+        field(30; "Table Name From"; Text[250])
         {
             Caption = 'Table Name From';
             Editable = false;
         }
-        field(20; "Table Name To"; Text[250])
+        field(40; "Table Name To"; Text[250])
         {
             Caption = 'Table Name To';
             Editable = false;
+        }
+        field(100; Description; Text[100])
+        {
+            Caption = 'Description';
         }
     }
 
     keys
     {
-        key(PK; "Table ID From", "Table ID To")
+        key(PK; Code)
         {
             Clustered = true;
         }
@@ -74,20 +83,26 @@ table 83857 "Mismatch Template TPTE"
 
     procedure CreateTemplates()
     begin
-        CreateTemplateFromTable(1382, 27);
-        CreateTemplateFromTable(17, 11307);
+        CreateTemplateFromTable('1382-27', '', 1382, 27);
+        CreateTemplateFromTable('17-11307', '', 17, 11307);
+        CreateTemplateFromTable('36-112', '', 36, 112);
+        CreateTemplateFromTable('36-114', '', 36, 114);
+        CreateTemplateFromTable('38-122', '', 38, 122);
+        CreateTemplateFromTable('38-124', '', 38, 124);
     end;
 
-    local procedure CreateTemplateFromTable(TableIDFrom: Integer; TableIDTo: Integer)
+    local procedure CreateTemplateFromTable(TemplateCode: Code[20]; DescriptionText: Text[100]; TableIDFrom: Integer; TableIDTo: Integer)
     var
         MismatchTemplate: Record "Mismatch Template TPTE";
     begin
-        if MismatchTemplate.Get(TableIDFrom, TableIDTo) then
+        if MismatchTemplate.Get(TemplateCode) then
             exit;
 
         MismatchTemplate.Init();
-        MismatchTemplate."Table ID From" := TableIDFrom;
-        MismatchTemplate."Table ID To" := TableIDTo;
+        MismatchTemplate.Validate(Code, TemplateCode);
+        MismatchTemplate.Validate(Description, DescriptionText);
+        MismatchTemplate.Validate("Table ID From", TableIDFrom);
+        MismatchTemplate.Validate("Table ID To", TableIDTo);
         MismatchTemplate.Insert(true);
     end;
 }

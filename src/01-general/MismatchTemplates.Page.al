@@ -12,6 +12,8 @@ page 83871 "Mismatch Templates TPTE"
         {
             repeater(General)
             {
+                field("Code"; Rec."Code") { }
+                field("Description"; Rec."Description") { }
                 field("Table ID From"; Rec."Table ID From") { }
                 field("Table ID To"; Rec."Table ID To") { }
                 field("Table Name From"; Rec."Table Name From") { }

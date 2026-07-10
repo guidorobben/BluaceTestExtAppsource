@@ -2,7 +2,14 @@ page 83872 "Field Mismatch TPTE"
 {
     ApplicationArea = All;
     Caption = 'Field Mismatch';
+    DeleteAllowed = false;
+    InsertAllowed = false;
+    ModifyAllowed = false;
     PageType = List;
+    Permissions =
+        tabledata AllObjWithCaption = R,
+        tabledata "Field Mismatch TPTE" = RIMD,
+        tabledata "Mismatch Template TPTE" = R;
     SourceTable = "Field Mismatch TPTE";
     UsageCategory = Tasks;
 
@@ -10,6 +17,22 @@ page 83872 "Field Mismatch TPTE"
     {
         area(Content)
         {
+            group(Template)
+            {
+                Caption = 'Template';
+
+                field(MismatchTemplateCode; MismatchTemplateCode)
+                {
+                    Caption = 'Mismatch Template Code';
+                    TableRelation = "Mismatch Template TPTE".Code;
+                    ToolTip = 'Specifies the value of the Mismatch Template Code field.';
+
+                    trigger OnValidate()
+                    begin
+                        ValidateMismatchTemplateCode(MismatchTemplateCode);
+                    end;
+                }
+            }
             group(Tables)
             {
                 Caption = 'Tables';
@@ -182,6 +205,7 @@ page 83872 "Field Mismatch TPTE"
     }
     var
         FieldMismatchHlp: Codeunit "Field Mismatch Hlp. TPTE";
+        MismatchTemplateCode: Code[20];
         TableIDFrom, TableIDTo : Integer;
         FieldNameFromStyleExpr, FieldNameToStyleExpr : Text;
         FieldTypeNameFromStyleExpr, FieldTypeNameToStyleExpr : Text;
@@ -191,10 +215,8 @@ page 83872 "Field Mismatch TPTE"
 
     trigger OnOpenPage()
     begin
-        TableIDFrom := 1382;
-        TableIDTo := 27;
-
-        BuildFieldList();
+        MismatchTemplateCode := '1382-27';
+        ValidateMismatchTemplateCode(MismatchTemplateCode);
     end;
 
     trigger OnAfterGetRecord()
@@ -223,6 +245,9 @@ page 83872 "Field Mismatch TPTE"
 
         if FieldMismatch."Publisher To" in ['Bluace', 'Bluace BV'] then
             PublisherToStyleExpr := Format(PageStyle::StrongAccent);
+
+        if FieldMismatch."ObsoleteState From" = FieldMismatch."ObsoleteState From"::Removed then
+            ObsoleteStateFromStyleExpr := Format(PageStyle::Unfavorable);
 
         if FieldMismatch."Field Id To" = 0 then
             exit;
@@ -291,5 +316,19 @@ page 83872 "Field Mismatch TPTE"
         AllObjWithCaption.SetLoadFields("Object Caption");
         AllObjWithCaption.Get(AllObjWithCaption."Object Type"::Table, TableIDTo);
         TableToCaption := AllObjWithCaption."Object Caption";
+    end;
+
+    local procedure ValidateMismatchTemplateCode(CurrMismatchTemplateCode: Code[20])
+    var
+        MismatchTemplate: Record "Mismatch Template TPTE";
+    begin
+        MismatchTemplate.SetLoadFields("Table ID From", "Table ID To");
+        if MismatchTemplate.Get(CurrMismatchTemplateCode) then begin
+            TableIDFrom := MismatchTemplate."Table ID From";
+            OnValidateTableIDFrom();
+            TableIDTo := MismatchTemplate."Table ID To";
+            OnValidateTableIDTo();
+            BuildFieldList();
+        end;
     end;
 }

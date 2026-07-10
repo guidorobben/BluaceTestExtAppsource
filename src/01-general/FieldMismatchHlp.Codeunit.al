@@ -41,8 +41,9 @@ codeunit 83883 "Field Mismatch Hlp. TPTE"
                 FieldMismatch."Field Type From" := Fields.Type;
                 FieldMismatch."Field Type Name From" := Fields."Type Name";
                 if Fields.Type = Fields.Type::Option then
-                    if TableRecordRef.Field(Fields."No.").IsEnum() then
-                        FieldMismatch."Field Type Name From" := 'Enum';
+                    if fields.ObsoleteState <> fields.ObsoleteState::Removed then
+                        if TableRecordRef.Field(Fields."No.").IsEnum() then
+                            FieldMismatch."Field Type Name From" := 'Enum';
                 //TODO option value fields
                 FieldMismatch."Enabled From" := Fields.Enabled;
                 FieldMismatch."ObsoleteState From" := Fields.ObsoleteState;
@@ -85,8 +86,9 @@ codeunit 83883 "Field Mismatch Hlp. TPTE"
                     FieldMismatch."Field Type To" := Fields.Type;
                     FieldMismatch."Field Type Name To" := Fields."Type Name";
                     if Fields.Type = Fields.Type::Option then
-                        if TableRecordRef.Field(Fields."No.").IsEnum() then
-                            FieldMismatch."Field Type Name To" := 'Enum';
+                        if fields.ObsoleteState <> fields.ObsoleteState::Removed then
+                            if TableRecordRef.Field(Fields."No.").IsEnum() then
+                                FieldMismatch."Field Type Name To" := 'Enum';
                     FieldMismatch."Enabled To" := Fields.Enabled;
                     FieldMismatch."ObsoleteState To" := Fields.ObsoleteState;
                     FieldMismatch."App Package ID To" := Fields."App Package ID";
